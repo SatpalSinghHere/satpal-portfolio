@@ -29,88 +29,126 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import Typewriter from 'typewriter-effect';
 import dynamic from 'next/dynamic';
+import { useState } from "react"
 
 const Scene = dynamic(() => import('@/components/3DModel'), { ssr: false });
 
 export function Portfolio() {
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [status, setStatus] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      setStatus('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '' });
+    } else {
+      setStatus('Failed to send message.');
+    }
+  };
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id)
-    element?.scrollIntoView({ behavior: "smooth"});
+    element?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <header className="px-4 lg:px-6 h-14 flex items-center">
-        <Link href="#" className="flex items-center justify-center" prefetch={false}>
+        <Link href="#" className="flex items-center justify-center"  >
           <img src="/Signature.png" className="h-9" />
           <span className="sr-only">Satpal Singh's Portfolio</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4"  >
             About
           </Link>
-          <Link href="#" onClick={()=>scrollToSection("projects")} className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="#" onClick={() => scrollToSection("projects")} className="text-sm font-medium hover:underline underline-offset-4"  >
             Projects
           </Link>
-          <Link href="#" onClick={()=>scrollToSection("skills")} className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="#" onClick={() => scrollToSection("skills")} className="text-sm font-medium hover:underline underline-offset-4"  >
             Skills
           </Link>
-          <Link href="#" onClick={()=>scrollToSection("experience")} className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="#" onClick={() => scrollToSection("experience")} className="text-sm font-medium hover:underline underline-offset-4"  >
             Experience
           </Link>
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4"  >
             Contact
           </Link>
         </nav>
       </header>
       <main className="flex-1">
-        <section id="hero" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="hero" className="w-full py-12 md:py-20 lg:py-32">
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">Satpal Singh</h1>
-                  <h2 className="text-xl font-semibold text-muted-foreground">Full-Stack Developer</h2>
+                  <h2 className="text-xl font-semibold text-muted-foreground">
+                    <Typewriter
+                      options={{
+                        strings: ["Full-Stack Developer"],
+                        autoStart: true,
+                        loop: true,
+                      }}
+                    />
+                  </h2>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    I'm a passionate full-stack developer with a strong background in building modern web applications.
-                    I love crafting beautiful and functional user interfaces, as well as designing robust and scalable
-                    backend systems.
+                    I'm a passionate full-stack developer with a strong background in building modern web applications. I love crafting beautiful and functional user interfaces, as well as designing robust and scalable backend systems.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
                   <button
-                    
-                    onClick={()=>scrollToSection("projects")}
+
+                    onClick={() => scrollToSection("projects")}
                     className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                    prefetch={false}
+
                   >
                     View Projects
                   </button>
                   <button
-                    onClick={()=>scrollToSection("contact")}
+                    onClick={() => scrollToSection("contact")}
                     className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                    prefetch={false}
+
                   >
                     Contact Me
                   </button>
                 </div>
               </div>
-              <div classname="mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full">
-              <img
-                src="/bear.jpeg"
-                width="550"
-                height="550"
-                alt="Hero"
-                className="mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full"
+              <div className="mx-auto aspect-square overflow-hidden rounded-lg object-cover sm:w-full">
+                <img
+                  src="/bear.jpeg"
+                  width="550"
+                  height="550"
+                  alt="Hero"
+                  className="mx-auto aspect-square overflow-hidden rounded-lg object-cover sm:w-full"
                 />
-              {/* <Scene /> */}
+                {/* <Scene /> */}
               </div>
             </div>
           </div>
         </section>
-        <section id="projects" className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+        <section id="projects" className="w-full py-12 md:py-20 lg:py-32 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -122,36 +160,40 @@ export function Portfolio() {
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3 lg:gap-12">
-              <Card>
-                <img
-                  src="/placeholder.svg"
-                  width="400"
-                  height="225"
-                  alt="Project 1"
-                  className="aspect-video overflow-hidden rounded-t-xl object-cover"
-                />
-                <CardContent className="p-4">
-                  <h3 className="text-xl font-bold">Project 1</h3>
-                  <p className="text-muted-foreground">
-                    A full-stack web application built with React, Node.js, and MongoDB.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <img
-                  src="/placeholder.svg"
-                  width="400"
-                  height="225"
-                  alt="Project 2"
-                  className="aspect-video overflow-hidden rounded-t-xl object-cover"
-                />
-                <CardContent className="p-4">
-                  <h3 className="text-xl font-bold">Project 2</h3>
-                  <p className="text-muted-foreground">
-                    A mobile-first responsive website built with Next.js and Tailwind CSS.
-                  </p>
-                </CardContent>
-              </Card>
+              <a href="https://chess-game-x4o4.onrender.com" target="_blank">
+                <Card>
+                  <img
+                    src="/chessLogo.jpeg"
+                    width="400"
+                    height="225"
+                    alt="Project 1"
+                    className="aspect-video overflow-hidden rounded-t-xl object-cover"
+                  />
+                  <CardContent className="p-4">
+                    <h3 className="text-xl font-bold">Chess Game</h3>
+                    <p className="text-muted-foreground">
+                      Click here to play chess with your friends online. This web application is built on Django + Channels
+                    </p>
+                  </CardContent>
+                </Card>
+              </a>
+              <a href="https://satpals-flappybird.onrender.com/" target="_blank">
+                <Card>
+                  <img
+                    src="/flappy bird.png"
+                    width="400"
+                    height="225"
+                    alt="Project 1"
+                    className="aspect-video overflow-hidden rounded-t-xl object-cover"
+                  />
+                  <CardContent className="p-4">
+                    <h3 className="text-xl font-bold">Flappy Bird</h3>
+                    <p className="text-muted-foreground">
+                      Fleeling bored? Try this classic game of Flappy Bird made using HTML Canvas, Javascript and CSS.
+                    </p>
+                  </CardContent>
+                </Card>
+              </a>
               <Card>
                 <img
                   src="/placeholder.svg"
@@ -275,28 +317,52 @@ export function Portfolio() {
                 </p>
               </div>
               <div className="mx-auto w-full max-w-sm space-y-2">
-                <form className="flex flex-col gap-2">
-                  <Input type="text" placeholder="Name" className="max-w-lg flex-1" />
-                  <Input type="email" placeholder="Email" className="max-w-lg flex-1" />
-                  <Textarea placeholder="Message" className="max-w-lg flex-1" />
-                  <Button type="submit">Send Message</Button>
+                <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
+                  <Input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    className="max-w-lg flex-1"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    className="max-w-lg flex-1"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                  <Textarea
+                    name="message"
+                    placeholder="Message"
+                    className="max-w-lg flex-1"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                  />
+                  <Button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">Send Message</Button>
                 </form>
+                {status && <p>{status}</p>}
               </div>
             </div>
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+      {/* <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
         <p className="text-xs text-muted-foreground">&copy; 2024 John Doe. All rights reserved.</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
+          <Link href="#" className="text-xs hover:underline underline-offset-4"  >
             Privacy
           </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
+          <Link href="#" className="text-xs hover:underline underline-offset-4"  >
             Terms of Service
           </Link>
         </nav>
-      </footer>
+      </footer> */}
     </div>
   )
 }
