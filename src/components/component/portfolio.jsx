@@ -160,7 +160,7 @@ export function Portfolio() {
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3 lg:gap-12">
-              <a href="https://chess-game-x4o4.onrender.com" target="_blank" className="duration-75 hover:scale-110">
+              <a href="https://satpals-chess.onrender.com" target="_blank" className="duration-75 hover:scale-110">
                 <Card>
                   <img
                     src="/chessLogo.jpeg"
@@ -323,8 +323,8 @@ export function Portfolio() {
                 <Link href="https://www.linkedin.com/in/satpal-singh-a7bb16238/#" target="_blank" className="text-muted-foreground hover:text-primary" prefetch={false}>
                   <LinkedinIcon className="h-10 w-10" />
                 </Link>
-                <Link href="https://x.com/SatpalS94690586" target="_blank" className="text-muted-foreground hover:text-primary" prefetch={false}>
-                  <TwitterIcon className="h-10 w-10" />
+                <Link href="https://x.com/1Singh2ruldemal" target="_blank" className="text-muted-foreground hover:text-primary" prefetch={false}>
+                  <XIcon className="h-10 w-10" />
                 </Link>
               </div>
               <div className="mx-auto w-full max-w-sm space-y-2">
@@ -536,7 +536,7 @@ function WindIcon(props) {
   )
 }
 
-function TwitterIcon(props) {
+function XIcon(props) {
   return (
     <svg
       {...props}
@@ -550,7 +550,8 @@ function TwitterIcon(props) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
     </svg>
   )
 }
