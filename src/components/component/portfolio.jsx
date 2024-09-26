@@ -131,7 +131,7 @@ export function Portfolio() {
                     className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
 
                   >
-                    Contact Me
+                    Let's Connect
                   </button>
                 </div>
               </div>
@@ -160,7 +160,7 @@ export function Portfolio() {
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3 lg:gap-12">
-              <a href="https://chess-game-x4o4.onrender.com" target="_blank">
+              <a href="https://chess-game-x4o4.onrender.com" target="_blank" className="duration-75 hover:scale-110">
                 <Card>
                   <img
                     src="/chessLogo.jpeg"
@@ -177,7 +177,7 @@ export function Portfolio() {
                   </CardContent>
                 </Card>
               </a>
-              <a href="https://satpals-flappybird.onrender.com/" target="_blank">
+              <a href="https://satpals-flappybird.onrender.com/" target="_blank" className="duration-75 hover:scale-110">
                 <Card>
                   <img
                     src="/flappy bird.png"
@@ -313,8 +313,19 @@ export function Portfolio() {
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Get in Touch</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   I'm always excited to connect with new people and discuss potential collaborations. Feel free to reach
-                  out to me through the form below.
+                  out to me through through any platform below.
                 </p>
+              </div>
+              <div className="flex items-center justify-center gap-4">
+                <Link href="https://www.instagram.com/satpal_singh_live/" target="_blank" className="text-muted-foreground hover:text-primary" prefetch={false}>
+                  <InstagramIcon className="h-10 w-10" />
+                </Link>
+                <Link href="https://www.linkedin.com/in/satpal-singh-a7bb16238/#" target="_blank" className="text-muted-foreground hover:text-primary" prefetch={false}>
+                  <LinkedinIcon className="h-10 w-10" />
+                </Link>
+                <Link href="https://x.com/SatpalS94690586" target="_blank" className="text-muted-foreground hover:text-primary" prefetch={false}>
+                  <TwitterIcon className="h-10 w-10" />
+                </Link>
               </div>
               <div className="mx-auto w-full max-w-sm space-y-2">
                 <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
@@ -521,6 +532,67 @@ function WindIcon(props) {
       <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" />
       <path d="M9.6 4.6A2 2 0 1 1 11 8H2" />
       <path d="M12.6 19.4A2 2 0 1 0 14 16H2" />
+    </svg>
+  )
+}
+
+function TwitterIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+    </svg>
+  )
+}
+
+function LinkedinIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  )
+}
+
+function InstagramIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
     </svg>
   )
 }
