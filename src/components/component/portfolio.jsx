@@ -160,6 +160,23 @@ export function Portfolio() {
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3 lg:gap-12">
+              <a href="https://satpals-youtube.vercel.app" target="_blank" className="duration-75 hover:scale-110">
+                <Card>
+                  <img
+                    src="https://t3.ftcdn.net/jpg/04/74/05/94/360_F_474059464_qldYuzxaUWEwNTtYBJ44VN89ARuFktHW.jpg"
+                    width="400"
+                    height="225"
+                    alt="Project 1"
+                    className="aspect-video overflow-hidden rounded-t-xl object-cover"
+                  />
+                  <CardContent className="p-4">
+                    <h3 className="text-xl font-bold">Youtube Clone</h3>
+                    <p className="text-muted-foreground">
+                      Checkout my youtube clone, developed using React, Youtube APIs, React-redux etc.
+                    </p>
+                  </CardContent>
+                </Card>
+              </a>
               <a href="https://satpals-chess.onrender.com" target="_blank" className="duration-75 hover:scale-110">
                 <Card>
                   <img
@@ -194,19 +211,7 @@ export function Portfolio() {
                   </CardContent>
                 </Card>
               </a>
-              <Card>
-                <img
-                  src="/placeholder.svg"
-                  width="400"
-                  height="225"
-                  alt="Project 3"
-                  className="aspect-video overflow-hidden rounded-t-xl object-cover"
-                />
-                <CardContent className="p-4">
-                  <h3 className="text-xl font-bold">Project 3</h3>
-                  <p className="text-muted-foreground">A real-time chat application built with Socket.IO and React.</p>
-                </CardContent>
-              </Card>
+
             </div>
           </div>
         </section>
@@ -279,20 +284,28 @@ export function Portfolio() {
                   </ul>
                 </CardContent>
               </Card> */}
+              <div></div>
               <Card>
                 <CardContent className="p-4">
-                  <h3 className="text-xl font-bold">Front-End Developer</h3>
-                  <p className="text-muted-foreground">XYZ Corporation | 2018 - 2020</p>
+                  <h3 className="text-xl font-bold">IT Systems Leader intern</h3>
+                  <p className="text-muted-foreground">The VONG Movement </p>
                   <ul className="list-disc space-y-2 pl-4 text-muted-foreground">
-                    <li>Lorem ipsum</li>
+                    <li>Creating and Hosting Landing pages</li>
                     <li>Collaborated with back-end developers to integrate front-end components with RESTful APIs.</li>
                     <li>
                       Participated in code reviews and implemented best practices for maintainable and scalable code.
                     </li>
+                    <li>
+                      Automating tasks such as backup automation, leave automation etc
+                    </li>
+                    <li>
+                      Handling campaign marketing emails using sendgrid, mautic etc.
+                    </li>
                   </ul>
                 </CardContent>
               </Card>
-              <Card>
+              <div></div>
+              {/* <Card>
                 <CardContent className="p-4">
                   <h3 className="text-xl font-bold">Web Developer Intern</h3>
                   <p className="text-muted-foreground">ABC Company | 2017 - 2018</p>
@@ -302,7 +315,7 @@ export function Portfolio() {
                     <li>Gained experience in working with version control systems and project management tools.</li>
                   </ul>
                 </CardContent>
-              </Card>
+              </Card> */}
             </div>
           </div>
         </section>
