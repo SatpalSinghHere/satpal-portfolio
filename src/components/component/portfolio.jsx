@@ -287,8 +287,8 @@ export function Portfolio() {
               <div></div>
               <Card>
                 <CardContent className="p-4">
-                  <h3 className="text-xl font-bold">IT Systems Leader intern</h3>
-                  <p className="text-muted-foreground">The VONG Movement </p>
+                  <h3 className="text-xl font-bold">IT Systems Leader</h3>
+                  <p className="text-muted-foreground">Intern at The VONG Movement </p>
                   <ul className="list-disc space-y-2 pl-4 text-muted-foreground">
                     <li>Creating and Hosting Landing pages</li>
                     <li>Collaborated with back-end developers to integrate front-end components with RESTful APIs.</li>
